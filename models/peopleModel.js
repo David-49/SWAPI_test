@@ -4,17 +4,20 @@ const { Schema } = mongoose;
 
 const peopleSchema = new Schema(
   {
-    name: String,
-    height: String,
-    mass: String,
-    hair_color: String,
-    skin_color: String,
-    eye_color: String,
-    birth_year: String,
-    gender: String,
-    created: String,
-    edited: String,
-    homeworld: Number,
+    fields: {
+      name: String,
+      height: String,
+      mass: String,
+      hair_color: String,
+      skin_color: String,
+      eye_color: String,
+      birth_year: String,
+      gender: String,
+      created: String,
+      edited: String,
+      homeworld: Number,
+    },
+    model: String,
   },
   { collection: "people" }
 );

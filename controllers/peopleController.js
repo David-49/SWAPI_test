@@ -1,7 +1,6 @@
 import PeopleModel from "../models/peopleModel.js";
 
 const getPeoples = (req, res) => {
-  console.log("GET_PEOPLES");
   PeopleModel.find((err, peoples) => {
     res.json(peoples);
   });
@@ -9,22 +8,57 @@ const getPeoples = (req, res) => {
 
 const getOnePeople = (req, res) => {
   PeopleModel.findById(req.params.id, (err, people) => {
+    if (!people) res.status(404).send("People not found");
     res.json(people);
   });
 };
 
 const updateOnePeople = async (req, res) => {
-  console.log(req.body.name);
   try {
-    const updatedPlanet = await PeopleModel.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
+    const updateFields = {};
+    for (const property in req.body) {
+      updateFields[`fields.${property}`] = req.body[property];
+    }
+    const updatedPeople = await PeopleModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: updateFields },
+      { new: true, runValidators: true }
     );
-    res.json({ message: "Planet updated successfully", updatedPlanet });
+
+    if (!updatedPeople) res.status(404).send("People not found");
+    res.json({ message: "People updated successfully", updatedPeople });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export { getPeoples, getOnePeople, updateOnePeople };
+const createOnePeople = async (req, res) => {
+  try {
+    const newPeople = new PeopleModel({
+      fields: req.body,
+      model: "resources.people",
+    });
+    const savedPeople = await newPeople.save();
+
+    res.json({ message: "People created successfully", savedPeople });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const deleteOnePeople = async (req, res) => {
+  try {
+    const deletedPeople = await PeopleModel.deleteOne({ _id: req.params.id });
+    res.json({ message: `ID ${req.params.id} deleted`, deletedPeople });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export {
+  getPeoples,
+  getOnePeople,
+  updateOnePeople,
+  createOnePeople,
+  deleteOnePeople,
+};
