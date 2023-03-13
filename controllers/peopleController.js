@@ -16,9 +16,11 @@ const getOnePeople = (req, res) => {
 const updateOnePeople = async (req, res) => {
   try {
     const updateFields = {};
+
     for (const property in req.body) {
       updateFields[`fields.${property}`] = req.body[property];
     }
+
     const updatedPeople = await PeopleModel.findByIdAndUpdate(
       { _id: req.params.id },
       { $set: updateFields },
