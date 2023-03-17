@@ -1,0 +1,24 @@
+{
+  "templates": [
+    {
+      "name": "Controller/Model",
+      "files": [
+        {
+          "path": "./controllers",
+          "name": "<%=name%>Controller.js",
+          "template": "controllerTemplate"
+        },
+        {
+          "path": "./models",
+          "name": "<%=name%>Model.js",
+          "template": "modelTemplate"
+        }
+
+      ],
+      "variables": {
+        "name": { "type": "text" },
+        "collectionName": { "type": "text" }
+      }
+    }
+  ]
+}

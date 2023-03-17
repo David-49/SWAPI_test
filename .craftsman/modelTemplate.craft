@@ -1,0 +1,17 @@
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
+
+const <%= name %>Schema = new Schema(
+    {
+        fields: {
+
+        },
+        model: String,
+    },
+    { collection: "<%= collectionName %>" }
+);
+
+const <%= name.charAt(0).toUpperCase() + name.slice(1) %>Model = mongoose.model("<%= name.charAt(0).toUpperCase() + name.slice(1) %>", <%= name %>Schema);
+
+export default <%= name.charAt(0).toUpperCase() + name.slice(1) %>Model;
