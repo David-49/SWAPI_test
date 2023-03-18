@@ -42,7 +42,7 @@ const createOneSpecie = async (req, res) => {
         });
         const savedSpecie = await newSpecie.save();
 
-        res.json({ message: "Specie created successfully", savedSpecie });
+        res.status(201).json({ message: "Specie created successfully", savedSpecie });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

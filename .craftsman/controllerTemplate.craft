@@ -42,7 +42,7 @@ const createOne<%= name.charAt(0).toUpperCase() + name.slice(1) %> = async (req,
         });
         const saved<%= name.charAt(0).toUpperCase() + name.slice(1) %> = await new<%= name.charAt(0).toUpperCase() + name.slice(1) %>.save();
 
-        res.json({ message: "<%= name.charAt(0).toUpperCase() + name.slice(1) %> created successfully", saved<%= name.charAt(0).toUpperCase() + name.slice(1) %> });
+        res.status(201).json({ message: "<%= name.charAt(0).toUpperCase() + name.slice(1) %> created successfully", saved<%= name.charAt(0).toUpperCase() + name.slice(1) %> });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

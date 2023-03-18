@@ -42,7 +42,7 @@ const createOnePeople = async (req, res) => {
     });
     const savedPeople = await newPeople.save();
 
-    res.json({ message: "People created successfully", savedPeople });
+    res.status(201).json({ message: "People created successfully", savedPeople });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -42,7 +42,7 @@ const createOnePlanet = async (req, res) => {
         });
         const savedPlanet = await newPlanet.save();
 
-        res.json({ message: "Planet created successfully", savedPlanet });
+        res.status(201).json({ message: "Planet created successfully", savedPlanet });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

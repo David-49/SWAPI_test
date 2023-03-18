@@ -42,7 +42,7 @@ const createOneFilm = async (req, res) => {
     });
     const savedFilm = await newFilm.save();
 
-    res.json({ message: "Film created successfully", savedFilm });
+    res.status(201).json({ message: "Film created successfully", savedFilm });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
