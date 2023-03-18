@@ -46,15 +46,13 @@ import {
   getVehicles,
   updateOneVehicle
 } from "../controllers/vehicleController.js";
+import filmRoutes from "./filmRoutes.js";
+import transportRoutes from "./transportRoutes.js";
 
 const routes = (app) => {
 
   // films
-  app.get("/films", getFilms);
-  app.get("/films/:id", getOneFilm);
-  app.patch("/films/:id", updateOneFilm);
-  app.post("/films", createOneFilm);
-  app.delete("/films/:id", deleteOneFilm);
+  app.use('/films', filmRoutes);
 
   // people
   app.get("/peoples", getPeoples);
@@ -85,11 +83,7 @@ const routes = (app) => {
   app.delete("/starships/:id", deleteOneStarship);
 
   // transport
-  app.get("/transports", getTransports);
-  app.get("/transports/:id", getOneTransport);
-  app.patch("/transports/:id", updateOneTransport);
-  app.post("/transports", createOneTransport);
-  app.delete("/transports/:id", deleteOneTransport);
+  app.use('/transports', transportRoutes);
 
   // vehicles
   app.get("/vehicles", getVehicles);
