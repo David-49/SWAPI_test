@@ -1,0 +1,19 @@
+import express from "express";
+import {
+    createOne<%= Name %>,
+    deleteOne<%= Name %>,
+    get<%= Name %>s,
+    getOne<%= Name %>,
+    updateOne<%= Name %>
+} from "../controllers/<%= Name.toLowerCase() %>Controller.js";
+
+
+const router = express.Router();
+
+router.get("/", get<%= Name %>s);
+router.get("/:id", getOne<%= Name %>);
+router.patch("/:id", updateOne<%= Name %>);
+router.post("/", createOne<%= Name %>);
+router.delete("/:id", deleteOne<%= Name %>);
+
+export default router;

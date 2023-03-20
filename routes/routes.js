@@ -1,53 +1,10 @@
-import {
-  createOneFilm,
-  deleteOneFilm,
-  getFilms,
-  getOneFilm,
-  updateOneFilm,
-} from "../controllers/filmController.js";
-import {
-  getPeoples,
-  getOnePeople,
-  updateOnePeople,
-  createOnePeople,
-  deleteOnePeople,
-} from "../controllers/peopleController.js";
-import {
-  createOnePlanet,
-  deleteOnePlanet,
-  getOnePlanet,
-  getPlanets,
-  updateOnePlanet
-} from "../controllers/planetController.js";
-import {
-  createOneSpecie,
-  deleteOneSpecie,
-  getOneSpecie,
-  getSpecies,
-  updateOneSpecie
-} from "../controllers/specieController.js";
-import {
-  createOneStarship,
-  deleteOneStarship,
-  getOneStarship,
-  getStarships,
-  updateOneStarship
-} from "../controllers/starshipController.js";
-import {
-  createOneTransport, deleteOneTransport,
-  getOneTransport,
-  getTransports,
-  updateOneTransport
-} from "../controllers/transportController.js";
-import {
-  createOneVehicle,
-  deleteOneVehicle,
-  getOneVehicle,
-  getVehicles,
-  updateOneVehicle
-} from "../controllers/vehicleController.js";
 import filmRoutes from "./filmRoutes.js";
 import transportRoutes from "./transportRoutes.js";
+import peopleRoutes from "./peopleRoutes.js";
+import vehicleRoutes from "./vehicleRoutes.js";
+import starshipRoutes from "./starshipRoutes.js";
+import specieRoutes from "./specieRoutes.js";
+import planetRoutes from "./planetRoutes.js";
 
 const routes = (app) => {
 
@@ -55,42 +12,22 @@ const routes = (app) => {
   app.use('/films', filmRoutes);
 
   // people
-  app.get("/peoples", getPeoples);
-  app.get("/peoples/:id", getOnePeople);
-  app.patch("/peoples/:id", updateOnePeople);
-  app.post("/peoples", createOnePeople);
-  app.delete("/peoples/:id", deleteOnePeople);
+  app.use('/peoples', peopleRoutes);
 
   // planets
-  app.get("/planets", getPlanets);
-  app.get("/planets/:id", getOnePlanet);
-  app.patch("/planets/:id", updateOnePlanet);
-  app.post("/planets", createOnePlanet);
-  app.delete("/planets/:id", deleteOnePlanet);
+  app.use('/planets', planetRoutes);
 
-  // planets
-  app.get("/species", getSpecies);
-  app.get("/species/:id", getOneSpecie);
-  app.patch("/species/:id", updateOneSpecie);
-  app.post("/species", createOneSpecie);
-  app.delete("/species/:id", deleteOneSpecie);
+  // species
+  app.use("/species", specieRoutes);
 
   // starships
-  app.get("/starships", getStarships);
-  app.get("/starships/:id", getOneStarship);
-  app.patch("/starships/:id", updateOneStarship);
-  app.post("/starships", createOneStarship);
-  app.delete("/starships/:id", deleteOneStarship);
+  app.use("/starships", starshipRoutes);
 
   // transport
   app.use('/transports', transportRoutes);
 
   // vehicles
-  app.get("/vehicles", getVehicles);
-  app.get("/vehicles/:id", getOneVehicle);
-  app.patch("/vehicles/:id", updateOneVehicle);
-  app.post("/vehicles", createOneVehicle);
-  app.delete("/vehicles/:id", deleteOneVehicle);
+  app.use("/vehicles", vehicleRoutes);
 };
 
 export default routes;
