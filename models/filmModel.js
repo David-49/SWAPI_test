@@ -21,9 +21,8 @@ const filmSchema = new Schema(
     },
     model: String,
   },
-  { collection: "films" }
 );
 
-const FilmModel = mongoose.model("Film", filmSchema);
+const FilmModel = mongoose.model("Film", filmSchema, 'films');
 
 export default FilmModel;
