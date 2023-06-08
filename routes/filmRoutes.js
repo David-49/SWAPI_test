@@ -1,12 +1,11 @@
 import express from "express";
 import {
-    createOneFilm,
-    deleteOneFilm,
-    getFilms,
-    getOneFilm,
-    updateOneFilm
+  createOneFilm,
+  deleteOneFilm,
+  getFilms,
+  getOneFilm,
+  updateOneFilm,
 } from "../controllers/filmController.js";
-
 
 const router = express.Router();
 

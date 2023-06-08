@@ -5,29 +5,45 @@ import vehicleRoutes from "./vehicleRoutes.js";
 import starshipRoutes from "./starshipRoutes.js";
 import specieRoutes from "./specieRoutes.js";
 import planetRoutes from "./planetRoutes.js";
+import userRoutes from "./userRoutes.js";
+import authRoutes from "./authRoutes.js";
+import authenticateToken from "../middleware/express/authenticateToken.js";
+import isAdmin from "../middleware/express/isAdmin.js";
+import swaggerUi from "swagger-ui-express";
 
-const routes = (app) => {
+const routes = (app, specs) => {
+  app.use("/api", authenticateToken);
 
   // films
-  app.use('/films', filmRoutes);
+  app.use("/api/films", filmRoutes);
 
   // people
-  app.use('/peoples', peopleRoutes);
+  app.use("/api/peoples", peopleRoutes);
 
   // planets
-  app.use('/planets', planetRoutes);
+  app.use("/api/planets", planetRoutes);
 
   // species
-  app.use("/species", specieRoutes);
+  app.use("/api/species", specieRoutes);
 
   // starships
-  app.use("/starships", starshipRoutes);
+  app.use("/api/starships", starshipRoutes);
 
   // transport
-  app.use('/transports', transportRoutes);
+  app.use("/api/transports", transportRoutes);
 
   // vehicles
-  app.use("/vehicles", vehicleRoutes);
+  app.use("/api/vehicles", vehicleRoutes);
+
+  // users
+  app.use("/settings", isAdmin);
+  app.use("/settings/users", userRoutes);
+
+  // login
+  app.use("/auth", authRoutes);
+
+  // swagger doc
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 };
 
 export default routes;
