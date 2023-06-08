@@ -1,0 +1,156 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Transport API"
+paths:
+  /transport:
+    get:
+      summary: "Get all transports"
+      responses:
+        200:
+          description: "A list of transports"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transport"
+    post:
+      summary: "Create a new transport"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transport"
+      responses:
+        201:
+          description: "The transport was successfully created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transport"
+        500:
+          description: "Some server error"
+  /transport/{id}:
+    get:
+      summary: "Get a transport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID of the transport"
+          schema:
+            type: string
+      responses:
+        200:
+          description: "The transport data"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transport"
+        404:
+          description: "Transport not found"
+    patch:
+      summary: "Update a transport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID of the transport"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transport"
+      responses:
+        200:
+          description: "The transport was successfully updated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transport"
+        500:
+          description: "Some server error"
+    delete:
+      summary: "Delete a transport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID of the transport"
+          schema:
+            type: string
+      responses:
+        200:
+          description: "The transport was successfully deleted"
+        500:
+          description: "Some server error"
+components:
+  schemas:
+    Transport:
+      type: object
+      required:
+        - fields
+        - model
+      properties:
+        fields:
+          type: object
+          properties:
+            edited:
+              type: string
+              description: "The edited date of the transport"
+            consumables:
+              type: string
+              description: "The consumables of the transport"
+            name:
+              type: string
+              description: "The name of the transport"
+            created:
+              type: string
+              description: "The created date of the transport"
+            cargo_capacity:
+              type: string
+              description: "The cargo capacity of the transport"
+            passengers:
+              type: string
+              description: "The passengers of the transport"
+            max_atmosphering_speed:
+              type: string
+              description: "The maximum atmosphering speed of the transport"
+            crew:
+              type: string
+              description: "The crew of the transport"
+            length:
+              type: string
+              description: "The length of the transport"
+            model:
+              type: string
+              description: "The model of the transport"
+            cost_in_credits:
+              type: string
+              description: "The cost in credits of the transport"
+            manufacturer:
+              type: string
+              description: "The manufacturer of the transport"
+        model:
+          type: string
+          description: "The model of the transport"
+      example:
+        fields:
+          edited: "2014-12-20T21:36:42.157000Z"
+          consumables: "2 years"
+          name: "Millennium Falcon"
+          created: "2014-12-10T16:59:45.094000Z"
+          cargo_capacity: "100000"
+          passengers: "6"
+          max_atmosphering_speed: "1050"
+          crew: "4"
+          length: "34.37"
+          model: "YT-1300 light freighter"
+          cost_in_credits: "100000"
+          manufacturer: "Corellian Engineering Corporation"
+        model: "Transport"

@@ -1,0 +1,152 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "People API"
+paths:
+  /people:
+    get:
+      summary: "Get all people"
+      responses:
+        200:
+          description: "A list of people"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/People"
+    post:
+      summary: "Create a new person"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/People"
+      responses:
+        201:
+          description: "The person was successfully created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/People"
+        500:
+          description: "Some server error"
+  /people/{id}:
+    get:
+      summary: "Get a person by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID of the person"
+          schema:
+            type: string
+      responses:
+        200:
+          description: "The person data"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/People"
+        404:
+          description: "Person not found"
+    patch:
+      summary: "Update a person by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID of the person"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/People"
+      responses:
+        200:
+          description: "The person was successfully updated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/People"
+        500:
+          description: "Some server error"
+    delete:
+      summary: "Delete a person by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID of the person"
+          schema:
+            type: string
+      responses:
+        200:
+          description: "The person was successfully deleted"
+        500:
+          description: "Some server error"
+components:
+  schemas:
+    People:
+      type: object
+      required:
+        - fields
+        - model
+      properties:
+        fields:
+          type: object
+          properties:
+            name:
+              type: string
+              description: "The name of the person"
+            height:
+              type: string
+              description: "The height of the person"
+            mass:
+              type: string
+              description: "The mass of the person"
+            hair_color:
+              type: string
+              description: "The hair color of the person"
+            skin_color:
+              type: string
+              description: "The skin color of the person"
+            eye_color:
+              type: string
+              description: "The eye color of the person"
+            birth_year:
+              type: string
+              description: "The birth year of the person"
+            gender:
+              type: string
+              description: "The gender of the person"
+            created:
+              type: string
+              description: "The created date of the person"
+            edited:
+              type: string
+              description: "The edited date of the person"
+            homeworld:
+              type: integer
+              description: "The id of the homeworld of the person"
+        model:
+          type: string
+          description: "The model of the person"
+      example:
+        fields:
+          name: "Luke Skywalker"
+          height: "172"
+          mass: "77"
+          hair_color: "blond"
+          skin_color: "fair"
+          eye_color: "blue"
+          birth_year: "19BBY"
+          gender: "male"
+          created: "2014-12-09T13:50:51.644000Z"
+          edited: "2014-12-20T21:17:56.891000Z"
+          homeworld: 1
+        model: "People"
