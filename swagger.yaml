@@ -1,0 +1,769 @@
+openapi: 3.0.0
+info:
+  title: API-STARWARS
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: PEOPLE
+  - name: FILM
+  - name: PLANETS
+  - name: SPECIES
+  - name: STARSHIPS
+  - name: TRANSPORT
+  - name: VEHICLES
+  - name: USERS
+  - name: AUTHENTIFICATION
+paths:
+  /api/peoples/6358f82c27f590617c90e7b2:
+    patch:
+      tags:
+        - PEOPLE
+      summary: update people
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Skylou
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/peoples/64705ec1a95d53859d84e2d6:
+    get:
+      tags:
+        - PEOPLE
+      summary: get people
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/peoples:
+    get:
+      tags:
+        - PEOPLE
+      summary: get peoples
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - PEOPLE
+      summary: create people
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: budy
+                gender:
+                  type: string
+                  example: male
+                skin_color:
+                  type: string
+                  example: blue
+                hair_color:
+                  type: string
+                  example: pink
+                height:
+                  type: integer
+                  example: "145"
+                eye_color:
+                  type: string
+                  example: green
+                mass:
+                  type: integer
+                  example: "98"
+                homeworld:
+                  type: integer
+                  example: "14"
+                birth_year:
+                  type: string
+                  example: 100BBY
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/peoples/63dff63025d4492d226a45ad:
+    delete:
+      tags:
+        - PEOPLE
+      summary: delete people
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/films:
+    get:
+      tags:
+        - FILM
+      summary: get films
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - FILM
+      summary: create film
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: La grange vadrouille dans l'espace
+                created:
+                  type: string
+                  example: "2014-12-20T18:49:38.403Z"
+                edited:
+                  type: string
+                  example: "2014-12-20T18:49:38.403Z"
+                episod_id:
+                  type: integer
+                  example: "66"
+                director:
+                  type: string
+                  example: David Lucas
+                relaease_date:
+                  type: string
+                  example: "2023-01-19"
+                opening_crawl:
+                  type: string
+                  example: blablabla
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/films/64705eb0a95d53859d84e2cf:
+    get:
+      tags:
+        - FILM
+      summary: get film
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/films/6358f84127f590617c90e80b:
+    patch:
+      tags:
+        - FILM
+      summary: update film
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Revenge of the cowwd
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/films/640f6f254e4f3f0f82fac588:
+    delete:
+      tags:
+        - FILM
+      summary: delete film
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/planets/64705ed0a95d53859d84e329:
+    get:
+      tags:
+        - PLANETS
+      summary: get planet
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/planets:
+    get:
+      tags:
+        - PLANETS
+      summary: get planets
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - PLANETS
+      summary: create planet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                edited:
+                  type: string
+                  example: "2014-12-20T20:58:18.411Z"
+                climate:
+                  type: string
+                  example: pluie
+                surface_water:
+                  type: integer
+                  example: "1"
+                name:
+                  type: string
+                  example: Tatooine Bis 2
+                diameter:
+                  type: integer
+                  example: "10465"
+                rotation_period:
+                  type: integer
+                  example: "23"
+                created:
+                  type: string
+                  example: "2014-12-09T13:50:49.641Z"
+                terrain:
+                  type: string
+                  example: desert
+                gravity:
+                  type: string
+                  example: 1 standard
+                orbital_period:
+                  type: integer
+                  example: "304"
+                population:
+                  type: integer
+                  example: "200000"
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/planets/6414cfb0c23d5e515e954523:
+    delete:
+      tags:
+        - PLANETS
+      summary: delete planet
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/planets/6414d03ccd67c792e0e3aebe:
+    patch:
+      tags:
+        - PLANETS
+      summary: update planet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: David star
+                terrain: océan
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/species:
+    get:
+      tags:
+        - SPECIES
+      summary: get species
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - SPECIES
+      summary: create specie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                edited: "2014-12-20T21:36:42.136Z"
+                classification: mammal
+                name: Test with wrong request
+                designation: sentient
+                created: "2014-12-10T13:52:11.567Z"
+                eye_colors: brown, blue, green, hazel, grey, amber
+                people:
+                  - 1
+                  - 4
+                  - 5
+                  - 6
+                  - 7
+                  - 9
+                  - 10
+                  - 11
+                  - 12
+                  - 14
+                  - 18
+                  - 19
+                  - 21
+                  - 22
+                  - 25
+                  - 26
+                  - 28
+                  - 29
+                  - 32
+                  - 34
+                  - 35
+                  - 39
+                  - 42
+                  - 43
+                  - 51
+                  - 60
+                  - 61
+                  - 62
+                  - 66
+                  - 67
+                  - 68
+                  - 69
+                  - 74
+                  - 81
+                  - 82
+                skin_colors: caucasian, black, asian, hispanic
+                language: Galactic Basic
+                hair_colors: blonde, brown, black, red
+                homeworld: 9
+                average_lifespan: "120"
+                average_height: "180"
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/species/641632c585465a63e5373cb0:
+    get:
+      tags:
+        - SPECIES
+      summary: get specie
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - SPECIES
+      summary: delete specie
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/species/6414f88b2ea2abab80db1bb9:
+    patch:
+      tags:
+        - SPECIES
+      summary: update specie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: New name !!!
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/starships:
+    get:
+      tags:
+        - STARSHIPS
+      summary: get starships
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - STARSHIPS
+      summary: create starship
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pilots: []
+                MGLT: "600"
+                starship_class: bugatti
+                hyperdrive_rating: "2.0"
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/starships/6358f8b327f590617c90e8a1:
+    get:
+      tags:
+        - STARSHIPS
+      summary: get starship
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/starships/64163bbeadc7c73c506b7f08:
+    patch:
+      tags:
+        - STARSHIPS
+      summary: update starship
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pilots:
+                  - David
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - STARSHIPS
+      summary: delete starship
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/transports/649d3bf122083705b1d8b1dd:
+    patch:
+      tags:
+        - TRANSPORT
+      summary: update transport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                edited: "2014-12-20T21:23:49.867Z"
+                consumables: 1 year
+                name: CR90 Peugeot
+                created: "2014-12-10T14:20:33.369Z"
+                cargo_capacity: "3000000"
+                passengers: "600"
+                max_atmosphering_speed: "950"
+                crew: 30-165
+                length: "150"
+                model: CR90 corvette
+                cost_in_credits: "3500000"
+                manufacturer: Corellian Engineering Corporation
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - TRANSPORT
+      summary: delete transport
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/transports:
+    get:
+      tags:
+        - TRANSPORT
+      summary: get transports
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - TRANSPORT
+      summary: create transport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                edited: "2014-12-20T21:23:49.867Z"
+                consumables: 23 year
+                name: CR90 Ferrari
+                created: "2014-12-10T14:20:33.369Z"
+                cargo_capacity: "3000300"
+                passengers: "60"
+                max_atmosphering_speed: "950"
+                crew: 30-165
+                length: "150"
+                model: CR90 Ferrari
+                cost_in_credits: "3500000"
+                manufacturer: Jimmy Engineering Corporation
+      security:
+        - bearerAuth: []
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/transports/649d39d622083705b1d8b1d3:
+    get:
+      tags:
+        - TRANSPORT
+      summary: get transport
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vehicles:
+    get:
+      tags:
+        - VEHICLES
+      summary: get vehicles
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - VEHICLES
+      summary: create vehicle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                vehicle_class: airfail
+                pilots:
+                  - 1
+                  - 18
+      security:
+        - bearerAuth: []
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vehicles/64705f3aa95d53859d84e3fe:
+    get:
+      tags:
+        - VEHICLES
+      summary: get vehicle
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vehicles/649d3b2522083705b1d8b1d8:
+    patch:
+      tags:
+        - VEHICLES
+      summary: update vehicle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                vehicle_class: airfail
+                pilots:
+                  - 1
+                  - 18
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - VEHICLES
+      summary: delete vehicle
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /settings/users:
+    get:
+      tags:
+        - USERS
+      summary: get users
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/6470764634a2cb35fd5bafda:
+    patch:
+      tags:
+        - USERS
+      summary: update user
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                pseudo:
+                  type: string
+                  example: David
+                admin:
+                  type: boolean
+                  example: "true"
+                old_password:
+                  type: string
+                  example: azerty
+                new_password:
+                  type: string
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/64706aa1455a0aa2a71e097f:
+    get:
+      tags:
+        - USERS
+      summary: get user
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/6470c285eb083a7490c1979d:
+    delete:
+      tags:
+        - USERS
+      summary: delete users
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - AUTHENTIFICATION
+      summary: Login
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                pseudo:
+                  type: string
+                  example: David
+                password:
+                  type: string
+                  example: azerty
+      parameters:
+        - name: pseudo
+          in: query
+          schema:
+            type: string
+          example: Jimmy
+        - name: password
+          in: query
+          schema:
+            type: string
+          example: azerty12
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/signup:
+    post:
+      tags:
+        - AUTHENTIFICATION
+      summary: Signup
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                pseudo:
+                  type: string
+                  example: Timoté
+                password:
+                  type: string
+                  example: azerty
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json: {}
